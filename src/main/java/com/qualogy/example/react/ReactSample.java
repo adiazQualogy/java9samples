@@ -32,18 +32,19 @@ public class ReactSample {
         + "\n# Type EXIT to quit.\n"
         + "#############################################");
     Scanner sc = new Scanner(System.in);
-    String input = "";
+    String input = null;
 
     while (!"EXIT".equals(input)) {
-      input = sc.nextLine();
 
       if ("ADD".equals(input)) {
         addSubscriber();
-      } else {
+      } else if (input != null){
         for (KeyPressedSubscriber subscriber : subscribers) {
           subscriber.onNext(input);
         }
       }
+
+      input = sc.nextLine();
     }
   }
 
