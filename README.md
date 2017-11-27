@@ -2,7 +2,7 @@
 
 ## Java 9 React API 
 
-###Run the ReactSample class and follow this instructions:
+### Run the ReactSample class main method via command line and follow these instructions:
 
 Type any text to add send it to the different subscribers.
 
