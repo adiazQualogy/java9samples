@@ -18,6 +18,11 @@ public class ReactSample {
     addSubscriber();
     logWelcomeMessage();
     publishMessages();
+    cancelSubscriptions();
+  }
+
+  private static void cancelSubscriptions() {
+    publisher.cancelAllSubscriptions();
   }
 
   private static void addSubscriber() {
@@ -42,6 +47,7 @@ public class ReactSample {
 
       input = sc.nextLine();
     }
+
   }
 
   private static void logWelcomeMessage() {

@@ -19,4 +19,10 @@ public class KeyPressedPublisher implements Flow.Publisher {
 
     LOGGER.info(() -> "New subscription (nr " + subscriptionList.size() + ")");
   }
+
+  public void cancelAllSubscriptions() {
+    for (KeyPressedSubscription subscription : subscriptionList) {
+      subscription.cancel();
+    }
+  }
 }
