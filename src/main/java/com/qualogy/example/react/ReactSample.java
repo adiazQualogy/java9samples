@@ -16,6 +16,7 @@ public class ReactSample {
   public static void main(String[] args) {
     addSubscriber();
     addSubscriber();
+    logWelcomeMessage();
     publishMessages();
   }
 
@@ -26,11 +27,6 @@ public class ReactSample {
   }
 
   private static void publishMessages() {
-    LOGGER.info("\n#######################"
-        + "\n# Type any text to add send it to the different subscribers. "
-        + "\n# Type ADD to add a new subscriber. "
-        + "\n# Type EXIT to quit.\n"
-        + "#############################################");
     Scanner sc = new Scanner(System.in);
     String input = null;
 
@@ -46,6 +42,14 @@ public class ReactSample {
 
       input = sc.nextLine();
     }
+  }
+
+  private static void logWelcomeMessage() {
+    LOGGER.info("\n#######################"
+        + "\n# Type any text to add send it to the different subscribers. "
+        + "\n# Type ADD to add a new subscriber. "
+        + "\n# Type EXIT to quit.\n"
+        + "#############################################");
   }
 
   private static KeyPressedSubscriber getKeyPressedSubscriber() {
