@@ -11,7 +11,7 @@ public class KeyPressedSubscription implements Flow.Subscription {
   private List<String> publishedMessages = new LinkedList<>();
   private final Flow.Subscriber subscriber;
 
-  public KeyPressedSubscription(Flow.Subscriber subscriber) {
+  KeyPressedSubscription(Flow.Subscriber subscriber) {
     this.subscriber = subscriber;
   }
 

@@ -20,7 +20,7 @@ public class KeyPressedSubscriber implements Flow.Subscriber {
 
   private Path filePath;
 
-  public KeyPressedSubscriber() throws IOException {
+  KeyPressedSubscriber() throws IOException {
     String fileName = System.currentTimeMillis() + ".txt";
     filePath = Files.write(Paths.get(fileName), "".getBytes(), StandardOpenOption.CREATE);
   }

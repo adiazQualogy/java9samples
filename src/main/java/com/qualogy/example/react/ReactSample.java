@@ -39,7 +39,7 @@ public class ReactSample {
 
       if ("ADD".equals(input)) {
         addSubscriber();
-      } else if (input != null){
+      } else if (input != null) {
         for (KeyPressedSubscriber subscriber : subscribers) {
           subscriber.onNext(input);
         }
