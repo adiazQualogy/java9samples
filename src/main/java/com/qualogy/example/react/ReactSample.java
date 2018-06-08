@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 public class ReactSample {
 
@@ -14,21 +15,31 @@ public class ReactSample {
   private static List<KeyPressedSubscriber> subscribers = new ArrayList<>();
 
   public static void main(String[] args) {
-    addSubscriber();
-    addSubscriber();
     logWelcomeMessage();
+
+    addSubscriber();
+    addSubscriber();
+
     publishMessages();
     cancelSubscriptions();
-  }
-
-  private static void cancelSubscriptions() {
-    publisher.cancelAllSubscriptions();
   }
 
   private static void addSubscriber() {
     KeyPressedSubscriber keyPressedSubscriber = getKeyPressedSubscriber();
     publisher.subscribe(keyPressedSubscriber);
     subscribers.add(keyPressedSubscriber);
+  }
+
+  private static KeyPressedSubscriber getKeyPressedSubscriber() {
+    KeyPressedSubscriber subscriber = null;
+    try {
+      subscriber = new KeyPressedSubscriber();
+      KeyPressedSubscription subscription = new KeyPressedSubscription(subscriber);
+      subscriber.onSubscribe(subscription);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return subscriber;
   }
 
   private static void publishMessages() {
@@ -47,7 +58,10 @@ public class ReactSample {
 
       input = sc.nextLine();
     }
+  }
 
+  private static void cancelSubscriptions() {
+    publisher.cancelAllSubscriptions();
   }
 
   private static void logWelcomeMessage() {
@@ -56,17 +70,5 @@ public class ReactSample {
         + "\n# Type ADD to add a new subscriber. "
         + "\n# Type EXIT to quit.\n"
         + "#############################################");
-  }
-
-  private static KeyPressedSubscriber getKeyPressedSubscriber() {
-    KeyPressedSubscriber subscriber = null;
-    try {
-      subscriber = new KeyPressedSubscriber();
-      KeyPressedSubscription subscription = new KeyPressedSubscription(subscriber);
-      subscriber.onSubscribe(subscription);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-    return subscriber;
   }
 }

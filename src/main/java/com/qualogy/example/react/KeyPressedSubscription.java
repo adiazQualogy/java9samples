@@ -16,13 +16,12 @@ public class KeyPressedSubscription implements Flow.Subscription {
   }
 
   @Override
-  public void request(long number) {
-    LOGGER.info(() -> "Next request is going to happen with number = [" + number + "]");
+  public void request(long numberOfMessages) {
+    //TODO Use the numberOfMessages parameter to publish the requested ones.
 
     for (String publishedMessage : publishedMessages) {
       subscriber.onNext(publishedMessage);
     }
-
   }
 
   @Override
