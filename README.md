@@ -10,3 +10,4 @@ Type ADD to add a new subscriber.
 
 Type EXIT to quit.
 
+And that's all!
